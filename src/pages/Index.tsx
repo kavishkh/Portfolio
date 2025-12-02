@@ -1,4 +1,6 @@
 import StarField from "@/components/StarField";
+import ShootingStars from "@/components/ShootingStars";
+import CosmicCursor from "@/components/CosmicCursor";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -11,6 +13,8 @@ const Index = () => {
   return (
     <main className="relative min-h-screen">
       <StarField />
+      <ShootingStars />
+      <CosmicCursor />
       <Navigation />
       <Hero />
       <About />

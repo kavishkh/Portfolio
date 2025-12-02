@@ -70,6 +70,7 @@ All colors MUST be HSL.
                 radial-gradient(ellipse at bottom, hsl(320 100% 10% / 0.2), transparent 50%),
                 #000000;
     position: relative;
+    cursor: none;
   }
 
   body::before {
