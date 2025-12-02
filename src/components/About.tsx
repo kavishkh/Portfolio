@@ -26,7 +26,7 @@ const About = () => {
               className="bg-card/50 backdrop-blur-sm border border-primary/20 rounded-xl p-8 hover:border-primary/50 transition-all glow-cyan"
             >
               <h3 className="text-2xl font-semibold text-primary mb-4">Who I Am</h3>
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-foreground leading-relaxed">
                 A passionate developer who believes in the power of technology to create meaningful change. 
                 I combine technical expertise with creative vision to build solutions that matter.
               </p>
@@ -39,7 +39,7 @@ const About = () => {
               className="bg-card/50 backdrop-blur-sm border border-secondary/20 rounded-xl p-8 hover:border-secondary/50 transition-all glow-purple"
             >
               <h3 className="text-2xl font-semibold text-secondary mb-4">What I Do</h3>
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-foreground leading-relaxed">
                 From full-stack web applications to innovative mobile solutions, I specialize in turning 
                 complex problems into elegant, user-friendly experiences.
               </p>
@@ -53,7 +53,7 @@ const About = () => {
             className="mt-8 bg-card/50 backdrop-blur-sm border border-accent/20 rounded-xl p-8 hover:border-accent/50 transition-all glow-magenta"
           >
             <h3 className="text-2xl font-semibold text-accent mb-4">My Mission</h3>
-            <p className="text-foreground/80 leading-relaxed">
+            <p className="text-foreground leading-relaxed">
               To push the boundaries of what's possible in digital creation, continuously learning and evolving 
               to craft experiences that inspire, engage, and make a lasting impact.
             </p>

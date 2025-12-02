@@ -29,7 +29,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-2xl text-muted-foreground"
+              className="text-2xl text-foreground"
             >
               Developer • Creator • Cosmic Explorer
             </motion.p>
@@ -38,7 +38,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="text-lg text-foreground/70 max-w-xl"
+              className="text-lg text-foreground max-w-xl"
             >
               Crafting digital experiences that transcend the ordinary.
               Exploring the intersection of code, creativity, and innovation.

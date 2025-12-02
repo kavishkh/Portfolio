@@ -45,7 +45,7 @@ const Contact = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.4 }}
-                  className="text-foreground/70 ml-4"
+                  className="text-foreground ml-4"
                 >
                   ✓ All systems operational
                 </motion.div>
@@ -83,7 +83,7 @@ const Contact = () => {
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ delay: 0.8 + index * 0.1 }}
                       whileHover={{ scale: 1.1, color: "hsl(180 100% 50%)" }}
-                      className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors p-3 bg-muted/30 rounded-lg border border-primary/20 hover:border-primary/50"
+                      className="flex items-center gap-2 text-foreground hover:text-primary transition-colors p-3 bg-muted/30 rounded-lg border border-primary/20 hover:border-primary/50"
                     >
                       <social.icon className="w-5 h-5" />
                       <span className="text-sm">{social.label}</span>
@@ -109,7 +109,7 @@ const Contact = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 1.4 }}
-              className="text-center text-muted-foreground mt-8"
+              className="text-center text-foreground mt-8"
             >
               // Ready to collaborate on something extraordinary? Let's connect.
             </motion.p>

@@ -76,7 +76,7 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <p className="text-foreground/70 mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-foreground mb-4 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
