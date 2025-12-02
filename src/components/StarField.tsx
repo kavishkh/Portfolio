@@ -30,8 +30,22 @@ const StarField = () => {
       stars.forEach((star) => {
         ctx.beginPath();
         ctx.arc(star.x, star.y - scrollY * 0.5, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100, 255, 255, ${star.opacity})`;
+        
+        // Random color for variety
+        const colors = [
+          `rgba(255, 255, 255, ${star.opacity})`,
+          `rgba(100, 255, 255, ${star.opacity})`,
+          `rgba(200, 150, 255, ${star.opacity})`,
+          `rgba(255, 100, 200, ${star.opacity})`,
+        ];
+        const colorIndex = Math.floor((star.x + star.y) % colors.length);
+        ctx.fillStyle = colors[colorIndex];
+        
+        // Add glow effect
+        ctx.shadowBlur = star.size * 3;
+        ctx.shadowColor = colors[colorIndex];
         ctx.fill();
+        ctx.shadowBlur = 0;
       });
     };
 
@@ -59,7 +73,7 @@ const StarField = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.8 }}
     />
   );
 };
