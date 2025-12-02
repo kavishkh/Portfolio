@@ -1,13 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import StarField from "@/components/StarField";
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="relative min-h-screen">
+      <StarField />
+      <Navigation />
+      <Hero />
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Contact />
+      
+      <footer className="relative py-8 border-t border-primary/20 bg-card/50 backdrop-blur-sm">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-muted-foreground">
+            © 2025 Kavish Khanna. Crafted with cosmic energy across the digital universe.
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 };
 
