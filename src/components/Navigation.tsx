@@ -41,7 +41,7 @@ const Navigation = () => {
                 key={item}
                 whileHover={{ scale: 1.1, color: "hsl(180 100% 50%)" }}
                 onClick={() => scrollToSection(item)}
-                className="capitalize text-foreground/80 hover:text-primary transition-colors font-medium"
+                className="capitalize text-foreground hover:text-primary transition-colors font-medium"
               >
                 {item}
               </motion.button>
