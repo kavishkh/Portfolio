@@ -120,6 +120,46 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 1280px;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Responsive Spacing Utilities */
+  .section-padding {
+    @apply py-16 sm:py-24 md:py-32;
+  }
+
+  /* Grid Layout Fixes */
+  .responsive-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .responsive-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   .text-gradient {
     @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
   }

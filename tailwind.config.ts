@@ -9,6 +9,11 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
+        "xs": "480px",
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
         "2xl": "1400px",
       },
     },
@@ -89,11 +94,11 @@ export default {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { 
-            boxShadow: "0 0 20px hsl(180 100% 50% / 0.3), 0 0 40px hsl(180 100% 50% / 0.1)" 
+          "0%, 100%": {
+            boxShadow: "0 0 20px hsl(180 100% 50% / 0.3), 0 0 40px hsl(180 100% 50% / 0.1)"
           },
-          "50%": { 
-            boxShadow: "0 0 30px hsl(180 100% 50% / 0.6), 0 0 60px hsl(180 100% 50% / 0.3)" 
+          "50%": {
+            boxShadow: "0 0 30px hsl(180 100% 50% / 0.6), 0 0 60px hsl(180 100% 50% / 0.3)"
           },
         },
         "orbit": {

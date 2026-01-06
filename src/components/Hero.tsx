@@ -3,7 +3,7 @@ import MoonScene from "./MoonScene";
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-0">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[120px] sm:pt-24 md:pt-0">
       <div className="container mx-auto px-4 sm:px-6 z-10 relative">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
@@ -18,7 +18,7 @@ const Hero = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
+              className="text-[clamp(2.5rem,8vw,4.5rem)] leading-[1.1] font-bold"
             >
               <span className="text-light-grey">Kavish Khanna</span>
             </motion.h1>
@@ -28,7 +28,7 @@ const Hero = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.4 }}
-              className="text-lg sm:text-xl md:text-2xl text-foreground"
+              className="text-[clamp(1.1rem,3vw,1.5rem)] text-foreground"
             >
               Developer • Creator • Cosmic Explorer
             </motion.p>
@@ -49,13 +49,13 @@ const Hero = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-foreground rounded-lg font-semibold glow-cyan hover:shadow-lg transition-all text-base sm:text-lg"
+                className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold glow-cyan hover:shadow-lg transition-all text-lg"
               >
                 View Projects
               </motion.button>
@@ -63,7 +63,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-all text-base sm:text-lg"
+                className="w-full sm:w-auto px-8 py-4 border border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-all text-lg"
               >
                 Get in Touch
               </motion.button>
