@@ -70,7 +70,23 @@ All colors MUST be HSL.
       radial-gradient(ellipse at bottom, hsl(210 25% 10% / 0.3), transparent 50%),
       #000000;
     position: relative;
-    cursor: none;
+  }
+
+  /* Only show custom cursor on non-touch devices */
+  @media (hover: hover) and (pointer: fine) {
+    body {
+      cursor: none;
+    }
+
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    [role="button"],
+    [onclick] {
+      cursor: none !important;
+    }
   }
 
   body::before {
@@ -88,19 +104,18 @@ All colors MUST be HSL.
     z-index: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Reduce background complexity on mobile for better performance */
+  @media (max-width: 768px) {
+    body::before {
+      background:
+        radial-gradient(2px 2px at 20% 30%, hsl(210 50% 60% / 0.1), transparent),
+        radial-gradient(1px 1px at 60% 70%, hsl(215 40% 55% / 0.08), transparent);
+      background-size: 200px 200px, 300px 300px;
+    }
   }
 
-  /* Hide default cursor on all interactive elements */
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  [role="button"],
-  [onclick] {
-    cursor: none !important;
+  html {
+    scroll-behavior: smooth;
   }
 }
 

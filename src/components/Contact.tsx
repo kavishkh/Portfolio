@@ -6,17 +6,17 @@ const Contact = () => {
   const [terminalText, setTerminalText] = useState("$ ");
 
   return (
-    <section id="contact" className="relative py-32">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-32">
+      <div className="container mx-auto px-4 sm:px-6">
         <div>
-          <h2 className="text-5xl font-bold text-light-grey mb-16 text-center">Initialize Contact</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-light-grey mb-10 sm:mb-16 text-center">Initialize Contact</h2>
 
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              className="bg-card/80 backdrop-blur-sm border border-primary/30 rounded-xl p-8 font-mono"
+              className="bg-card/80 backdrop-blur-sm border border-primary/30 rounded-xl p-5 sm:p-8 font-mono"
             >
               <div className="flex items-center gap-2 mb-6 border-b border-primary/30 pb-4">
                 <div className="flex gap-2">
@@ -24,10 +24,10 @@ const Contact = () => {
                   <div className="w-3 h-3 rounded-full bg-accent"></div>
                   <div className="w-3 h-3 rounded-full bg-primary"></div>
                 </div>
-                <span className="text-primary ml-4">contact@kavishkhanna.space</span>
+                <span className="text-primary ml-2 sm:ml-4 text-xs sm:text-base truncate">contact@kavishkhanna.space</span>
               </div>
 
-              <div className="space-y-4 text-primary">
+              <div className="space-y-4 text-primary text-sm sm:text-base">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -68,7 +68,7 @@ const Contact = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: false }}
                   transition={{ delay: 0.8 }}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 ml-4"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-4 ml-0 sm:ml-4"
                 >
                   {[
                     { icon: Mail, label: "Email", link: "Kavishkhanna06@gmail.com" },
@@ -86,10 +86,10 @@ const Contact = () => {
                       viewport={{ once: false }}
                       transition={{ delay: 0.8 + index * 0.1 }}
                       whileHover={{ scale: 1.1, color: "hsl(180 100% 50%)" }}
-                      className="flex items-center gap-2 text-foreground hover:text-primary transition-colors p-3 bg-muted/30 rounded-lg border border-primary/20 hover:border-primary/50"
+                      className="flex items-center gap-2 text-foreground hover:text-primary transition-colors p-3 bg-muted/30 rounded-lg border border-primary/20 hover:border-primary/50 min-h-[44px]"
                     >
-                      <social.icon className="w-5 h-5" />
-                      <span className="text-sm">{social.label}</span>
+                      <social.icon className="w-5 h-5 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm">{social.label}</span>
                     </motion.a>
                   ))}
                 </motion.div>
@@ -114,7 +114,7 @@ const Contact = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: false }}
               transition={{ delay: 1.4 }}
-              className="text-center text-foreground mt-8"
+              className="text-center text-foreground mt-6 sm:mt-8 text-sm sm:text-base"
             >
               // Ready to collaborate on something extraordinary? Let's connect.
             </motion.p>
