@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const [terminalText, setTerminalText] = useState("$ ");
@@ -74,7 +74,6 @@ const Contact = () => {
                     { icon: Mail, label: "Email", link: "Kavishkhanna06@gmail.com" },
                     { icon: Github, label: "GitHub", link: "https://github.com/kavishkh" },
                     { icon: Linkedin, label: "LinkedIn", link: "https://linkedin.com" },
-                    { icon: Twitter, label: "Twitter", link: "https://twitter.com" },
                   ].map((social, index) => (
                     <motion.a
                       key={social.label}
