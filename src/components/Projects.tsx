@@ -23,7 +23,7 @@ const projects = [
     description: "Mental health tracking app helping users document and analyze their recovery progress.",
     tech: ["React Native", "Firebase", "ML"],
     color: "accent",
-    demo: "#",
+    demo: "https://eating-disorder-frontend.vercel.app/",
     github: "#",
   },
   {
