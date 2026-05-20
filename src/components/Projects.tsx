@@ -82,19 +82,34 @@ const Projects = () => {
                 transition={{ delay: index * 0.15 }}
                 whileHover={{ scale: 1.05, rotateY: 5, z: 50 }}
                 className={`bg-card/50 backdrop-blur-sm border border-${project.color}/20 rounded-xl p-8 hover:border-${project.color}/50 transition-all animate-float cursor-pointer`}
-                style={{ animationDelay: `${index * 0.3}s`, transformStyle: "preserve-3d" }}
+                style={{
+                  animationDelay: `${index * 0.3}s`,
+                  transformStyle: "preserve-3d",
+                }}
               >
                 {/* Header: title + links */}
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-2xl font-bold text-light-grey">{project.name}</h3>
                   <div className="flex gap-2 flex-wrap justify-end">
                     {project.github && project.github !== "#" && (
-                      <motion.a href={project.github} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2, rotate: 15 }} title="GitHub">
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.2, rotate: 15 }}
+                        title="GitHub"
+                      >
                         <Github className={`w-5 h-5 text-${project.color} cursor-pointer`} />
                       </motion.a>
                     )}
                     {project.demo && project.demo !== "#" && (
-                      <motion.a href={project.demo} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2, rotate: -15 }} title="Live Demo">
+                      <motion.a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.2, rotate: -15 }}
+                        title="Live Demo"
+                      >
                         <ExternalLink className={`w-5 h-5 text-${project.color} cursor-pointer`} />
                       </motion.a>
                     )}
@@ -109,17 +124,29 @@ const Projects = () => {
                   <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg bg-${project.color}/10 border border-${project.color}/30 mb-4 w-fit`}>
                     <span className={`text-xs font-medium text-${project.color}`}>Vendor App</span>
                     {project.github2 && (
-                      <motion.a href={project.github2} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2 }} title="Vendor GitHub">
+                      <motion.a
+                        href={project.github2}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.2 }}
+                        title="Vendor GitHub"
+                      >
                         <Github className={`w-3.5 h-3.5 text-${project.color} cursor-pointer`} />
                       </motion.a>
                     )}
-                    <motion.a href={project.demo2} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2 }} title="Vendor Demo">
+                    <motion.a
+                      href={project.demo2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.2 }}
+                      title="Vendor Demo"
+                    >
                       <ExternalLink className={`w-3.5 h-3.5 text-${project.color} cursor-pointer`} />
                     </motion.a>
                   </div>
                 )}
 
-                {/* Tech stack */}
+                {/* Tech tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
