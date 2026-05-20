@@ -21,9 +21,8 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-card/80 backdrop-blur-lg border-b border-primary/20" : ""
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/80 backdrop-blur-lg border-b border-primary/20" : ""
+        }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -36,7 +35,7 @@ const Navigation = () => {
           </motion.div>
 
           <div className="flex gap-8">
-            {["about", "skills", "experience", "projects", "contact"].map((item) => (
+            {["about", "skills", "projects", "contact"].map((item) => (
               <motion.button
                 key={item}
                 whileHover={{ scale: 1.1, color: "hsl(180 100% 50%)" }}

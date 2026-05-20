@@ -1,83 +1,125 @@
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
 
-const projects = [
+interface Project {
+  name: string;
+  description: string;
+  tech: string[];
+  color: string;
+  demo: string;
+  github: string;
+  demo2?: string;
+  github2?: string;
+}
+
+const projects: Project[] = [
+  {
+    name: "Cartsy",
+    description: "Full-stack e-commerce platform with a shopper app and a separate vendor dashboard for managing inventory, orders, and sales.",
+    tech: ["React", "Node.js", "MongoDB"],
+    color: "accent",
+    demo: "https://cartsy-silk.vercel.app/",
+    github: "https://github.com/kavishkh/CARTSY",
+    demo2: "https://cartsy-vendor.vercel.app/",
+    github2: "https://github.com/kavishkh/CARTSY-VENDOR",
+  },
   {
     name: "PowerLite",
-    description: "A lightweight power management solution optimizing energy consumption with real-time analytics.",
+    description: "Powerlite is a professional site for Powerlite Electricals showcasing premium electrical solutions and industrial transformer products.",
     tech: ["React", "Node.js", "MongoDB"],
     color: "primary",
+    demo: "https://powerlite-heyr.vercel.app/",
+    github: "#",
   },
   {
     name: "FRXSH",
-    description: "Fresh food delivery platform connecting local farmers with consumers for sustainable living.",
+    description: "Frxsh is a student-driven platform empowering student entrepreneurs to build their brands and sell their products.",
     tech: ["Next.js", "PostgreSQL", "Stripe"],
     color: "secondary",
+    demo: "https://frxsh.vercel.app/",
+    github: "#",
   },
   {
     name: "Reflect Recovery Journey",
     description: "Mental health tracking app helping users document and analyze their recovery progress.",
     tech: ["React Native", "Firebase", "ML"],
     color: "accent",
+    demo: "#",
+    github: "#",
   },
   {
     name: "SplitSmart",
     description: "Intelligent expense splitting app for groups with smart categorization and settlement.",
     tech: ["React", "Express", "Redis"],
     color: "primary",
+    demo: "https://split-smart-ten.vercel.app/",
+    github: "#",
   },
   {
     name: "HerFlow",
     description: "Comprehensive period tracking and health management platform for women's wellness.",
     tech: ["Flutter", "Python", "TensorFlow"],
     color: "secondary",
+    demo: "#",
+    github: "#",
   },
 ];
 
 const Projects = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="projects" className="relative py-32">
       <div className="container mx-auto px-6">
-        <motion.div ref={ref}>
-          <h2 className="text-5xl font-bold text-gradient mb-16 text-center">Floating Projects</h2>
+        <div>
+          <h2 className="text-5xl font-bold text-light-grey mb-16 text-center">Floating Projects</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {projects.map((project, index) => (
               <motion.div
                 key={project.name}
                 initial={{ opacity: 0, y: 50, rotateX: -15 }}
-                animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.15 }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  rotateY: 5,
-                  z: 50,
-                }}
+                whileHover={{ scale: 1.05, rotateY: 5, z: 50 }}
                 className={`bg-card/50 backdrop-blur-sm border border-${project.color}/20 rounded-xl p-8 hover:border-${project.color}/50 transition-all animate-float cursor-pointer`}
-                style={{ 
-                  animationDelay: `${index * 0.3}s`,
-                  transformStyle: "preserve-3d",
-                }}
+                style={{ animationDelay: `${index * 0.3}s`, transformStyle: "preserve-3d" }}
               >
+                {/* Header: title + links */}
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className={`text-2xl font-bold text-${project.color}`}>{project.name}</h3>
-                  <div className="flex gap-2">
-                    <motion.div whileHover={{ scale: 1.2, rotate: 15 }}>
-                      <Github className={`w-5 h-5 text-${project.color} cursor-pointer`} />
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.2, rotate: -15 }}>
-                      <ExternalLink className={`w-5 h-5 text-${project.color} cursor-pointer`} />
-                    </motion.div>
+                  <h3 className="text-2xl font-bold text-light-grey">{project.name}</h3>
+                  <div className="flex gap-2 flex-wrap justify-end">
+                    {project.github && project.github !== "#" && (
+                      <motion.a href={project.github} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2, rotate: 15 }} title="GitHub">
+                        <Github className={`w-5 h-5 text-${project.color} cursor-pointer`} />
+                      </motion.a>
+                    )}
+                    {project.demo && project.demo !== "#" && (
+                      <motion.a href={project.demo} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2, rotate: -15 }} title="Live Demo">
+                        <ExternalLink className={`w-5 h-5 text-${project.color} cursor-pointer`} />
+                      </motion.a>
+                    )}
                   </div>
                 </div>
 
+                {/* Description */}
                 <p className="text-foreground mb-4 leading-relaxed">{project.description}</p>
 
+                {/* Vendor sub-links for Cartsy */}
+                {project.demo2 && (
+                  <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg bg-${project.color}/10 border border-${project.color}/30 mb-4 w-fit`}>
+                    <span className={`text-xs font-medium text-${project.color}`}>Vendor App</span>
+                    {project.github2 && (
+                      <motion.a href={project.github2} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2 }} title="Vendor GitHub">
+                        <Github className={`w-3.5 h-3.5 text-${project.color} cursor-pointer`} />
+                      </motion.a>
+                    )}
+                    <motion.a href={project.demo2} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2 }} title="Vendor Demo">
+                      <ExternalLink className={`w-3.5 h-3.5 text-${project.color} cursor-pointer`} />
+                    </motion.a>
+                  </div>
+                )}
+
+                {/* Tech stack */}
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
@@ -91,7 +133,7 @@ const Projects = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

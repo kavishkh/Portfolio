@@ -4,30 +4,29 @@ import MoonScene from "./MoonScene";
 const Hero = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <MoonScene />
-      </div>
-
       <div className="container mx-auto px-6 z-10 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
             transition={{ duration: 0.8 }}
             className="text-left space-y-6"
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
               transition={{ delay: 0.2 }}
               className="text-7xl font-bold"
             >
-              <span className="text-gradient">Kavish Khanna</span>
+              <span className="text-light-grey">Kavish Khanna</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
               transition={{ delay: 0.4 }}
               className="text-2xl text-foreground"
             >
@@ -36,7 +35,8 @@ const Hero = () => {
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
               transition={{ delay: 0.6 }}
               className="text-lg text-foreground max-w-xl"
             >
@@ -46,7 +46,8 @@ const Hero = () => {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
               transition={{ delay: 0.8 }}
               className="flex gap-4"
             >
@@ -69,7 +70,15 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          <div className="hidden lg:block"></div>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block h-[600px]"
+          >
+            <MoonScene />
+          </motion.div>
         </div>
       </div>
     </section>

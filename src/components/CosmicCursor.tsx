@@ -23,7 +23,7 @@ const CosmicCursor = () => {
         y: e.clientY,
       };
 
-      setTrail((prev) => [...prev.slice(-8), newTrail]);
+      setTrail((prev) => [...prev.slice(-12), newTrail]);
     };
 
     const handleMouseLeave = () => {
@@ -41,7 +41,7 @@ const CosmicCursor = () => {
 
   useEffect(() => {
     const cleanupInterval = setInterval(() => {
-      setTrail((prev) => prev.slice(-8));
+      setTrail((prev) => prev.slice(-12));
     }, 50);
 
     return () => clearInterval(cleanupInterval);
@@ -50,8 +50,8 @@ const CosmicCursor = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50">
-      {/* Main cursor glow */}
+    <div className="fixed inset-0 pointer-events-none z-50 mix-blend-screen">
+      {/* Main cursor - Realistic Star */}
       <motion.div
         animate={{
           x: mousePosition.x - 20,
@@ -59,25 +59,33 @@ const CosmicCursor = () => {
         }}
         transition={{
           type: "spring",
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
+          stiffness: 1000,
+          damping: 40,
+          mass: 0.2,
         }}
-        className="absolute w-10 h-10 rounded-full border-2 border-primary/50 glow-cyan"
-        style={{
-          background: "radial-gradient(circle, hsl(180 100% 50% / 0.2), transparent 70%)",
-        }}
-      />
+        className="absolute w-10 h-10 flex items-center justify-center"
+      >
+        {/* Core Glow */}
+        <div className="absolute w-2 h-2 bg-white rounded-full shadow-[0_0_15px_2px_rgba(100,200,255,0.8)]" />
 
-      {/* Trail particles */}
+        {/* Diffraction Spikes (Cross Flare) */}
+        <div className="absolute w-[2px] h-8 bg-gradient-to-b from-transparent via-blue-200 to-transparent opacity-80" />
+        <div className="absolute w-8 h-[2px] bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-80" />
+
+        {/* Secondary Diffraction Spikes (Diagonal) */}
+        <div className="absolute w-[1px] h-4 bg-gradient-to-b from-transparent via-cyan-100 to-transparent opacity-60 rotate-45" />
+        <div className="absolute w-4 h-[1px] bg-gradient-to-r from-transparent via-cyan-100 to-transparent opacity-60 rotate-45" />
+      </motion.div>
+
+      {/* Trail particles - Stardust */}
       {trail.map((point, index) => (
         <motion.div
           key={point.id}
           initial={{
-            x: point.x - 3,
-            y: point.y - 3,
-            opacity: 1,
-            scale: 1,
+            x: point.x,
+            y: point.y,
+            opacity: 0.6,
+            scale: 0.8,
           }}
           animate={{
             opacity: 0,
@@ -87,40 +95,13 @@ const CosmicCursor = () => {
             duration: 0.6,
             ease: "easeOut",
           }}
-          className="absolute w-2 h-2 rounded-full"
+          className="absolute w-1 h-1 bg-blue-200 rounded-full shadow-[0_0_4px_rgba(100,200,255,0.6)]"
           style={{
-            background:
-              index % 3 === 0
-                ? "hsl(180 100% 50%)"
-                : index % 3 === 1
-                ? "hsl(270 100% 60%)"
-                : "hsl(320 100% 60%)",
-            boxShadow:
-              index % 3 === 0
-                ? "0 0 10px hsl(180 100% 50%)"
-                : index % 3 === 1
-                ? "0 0 10px hsl(270 100% 60%)"
-                : "0 0 10px hsl(320 100% 60%)",
+            marginLeft: -2,
+            marginTop: -2,
           }}
         />
       ))}
-
-      {/* Center dot */}
-      <motion.div
-        animate={{
-          x: mousePosition.x - 2,
-          y: mousePosition.y - 2,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 1000,
-          damping: 35,
-        }}
-        className="absolute w-1 h-1 rounded-full bg-white"
-        style={{
-          boxShadow: "0 0 8px hsl(180 100% 50%), 0 0 16px hsl(180 100% 50% / 0.5)",
-        }}
-      />
     </div>
   );
 };

@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 
 const skills = [
   { name: "React", level: 95, color: "primary" },
@@ -14,35 +12,34 @@ const skills = [
 ];
 
 const Skills = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="skills" className="relative py-32">
       <div className="container mx-auto px-6">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, margin: "-100px" }}
         >
-          <h2 className="text-5xl font-bold text-gradient mb-16 text-center">Skills & Technologies</h2>
+          <h2 className="text-5xl font-bold text-light-grey mb-16 text-center">Skills & Technologies</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className={`bg-card/50 backdrop-blur-sm border border-${skill.color}/20 rounded-xl p-6 hover:border-${skill.color}/50 transition-all animate-float`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <h3 className={`text-xl font-semibold text-${skill.color} mb-4`}>{skill.name}</h3>
+                <h3 className="text-xl font-semibold text-light-grey mb-4">{skill.name}</h3>
                 <div className="relative w-full h-2 bg-muted rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
-                    animate={isInView ? { width: `${skill.level}%` } : {}}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: false }}
                     transition={{ delay: index * 0.1 + 0.3, duration: 1 }}
                     className={`absolute h-full bg-${skill.color} rounded-full`}
                     style={{
