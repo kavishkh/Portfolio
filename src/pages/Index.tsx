@@ -23,10 +23,10 @@ const Index = () => {
       <Projects />
       <Contact />
 
-      <footer className="relative py-8 border-t border-primary/20 bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-muted-foreground">
-            © 2025 Kavish Khanna. Crafted with cosmic energy across the digital universe.
+      <footer className="relative border-t border-primary/20 bg-card/50 py-8 backdrop-blur-sm">
+        <div className="container mx-auto px-4 text-center sm:px-6">
+          <p className="text-sm text-muted-foreground sm:text-base">
+            &copy; 2025 Kavish Khanna. Crafted with cosmic energy across the digital universe.
           </p>
         </div>
       </footer>

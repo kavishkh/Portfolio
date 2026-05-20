@@ -13,6 +13,10 @@ const CosmicCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) {
+      return;
+    }
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);

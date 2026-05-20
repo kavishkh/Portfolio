@@ -70,7 +70,6 @@ All colors MUST be HSL.
       radial-gradient(ellipse at bottom, hsl(210 25% 10% / 0.3), transparent 50%),
       #000000;
     position: relative;
-    cursor: none;
   }
 
   body::before {
@@ -92,15 +91,20 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
-  /* Hide default cursor on all interactive elements */
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  [role="button"],
-  [onclick] {
-    cursor: none !important;
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
+
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    [role="button"],
+    [onclick] {
+      cursor: none !important;
+    }
   }
 }
 

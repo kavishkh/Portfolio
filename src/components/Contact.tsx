@@ -4,6 +4,12 @@ import { Mail, Github, Linkedin, Twitter, Copy, Check } from "lucide-react";
 
 const EMAIL = "Kavishkhanna06@gmail.com";
 
+const socialLinks = [
+  { icon: Github, label: "GitHub", link: "https://github.com/kavishkh", delay: 0.9 },
+  { icon: Linkedin, label: "LinkedIn", link: "https://linkedin.com", delay: 1.0 },
+  { icon: Twitter, label: "Twitter", link: "https://twitter.com", delay: 1.1 },
+];
+
 const Contact = () => {
   const [emailPopup, setEmailPopup] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -14,59 +20,29 @@ const Contact = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
-
-    setStatus("sending");
-    try {
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current!,
-        EMAILJS_PUBLIC_KEY
-      );
-      setStatus("success");
-      setForm({ name: "", email: "", message: "" });
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  const inputClass = (field: string) =>
-    `w-full bg-transparent border-b ${
-      focused === field ? "border-primary" : "border-primary/30"
-    } text-foreground placeholder-foreground/30 outline-none py-1 transition-colors duration-200 font-mono text-sm`;
-
   return (
-    <section id="contact" className="relative py-32">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="relative py-20 sm:py-28 lg:py-32">
+      <div className="container mx-auto px-4 sm:px-6">
         <div>
-          <h2 className="text-5xl font-bold text-light-grey mb-16 text-center">Initialize Contact</h2>
+          <h2 className="mb-10 text-center text-3xl font-bold text-light-grey sm:mb-16 sm:text-4xl lg:text-5xl">Initialize Contact</h2>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="mx-auto max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              className="bg-card/80 backdrop-blur-sm border border-primary/30 rounded-xl p-8 font-mono"
+              className="rounded-lg border border-primary/30 bg-card/80 p-4 font-mono backdrop-blur-sm sm:p-6 lg:p-8"
             >
-              {/* Terminal title bar */}
-              <div className="flex items-center gap-2 mb-6 border-b border-primary/30 pb-4">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-destructive" />
-                  <div className="w-3 h-3 rounded-full bg-accent" />
-                  <div className="w-3 h-3 rounded-full bg-primary" />
+              <div className="mb-6 flex min-w-0 items-center gap-2 border-b border-primary/30 pb-4">
+                <div className="flex shrink-0 gap-2">
+                  <div className="h-3 w-3 rounded-full bg-destructive" />
+                  <div className="h-3 w-3 rounded-full bg-accent" />
+                  <div className="h-3 w-3 rounded-full bg-primary" />
                 </div>
-                <span className="text-primary ml-4">contact@kavishkhanna.space</span>
+                <span className="ml-2 truncate text-xs text-primary sm:ml-4 sm:text-base">contact@kavishkhanna.space</span>
               </div>
 
-              <div className="space-y-4 text-primary">
-                {/* Status line */}
+              <div className="space-y-4 break-words text-sm text-primary sm:text-base">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -76,7 +52,7 @@ const Contact = () => {
                   <span className="text-accent">kavish@terminal</span>
                   <span className="text-secondary">:</span>
                   <span className="text-primary">~$</span>
-                  <span className="ml-2">status --connection</span>
+                  <span className="ml-2 inline-block">status --connection</span>
                 </motion.div>
 
                 <motion.div
@@ -84,12 +60,11 @@ const Contact = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false }}
                   transition={{ delay: 0.4 }}
-                  className="text-foreground ml-4"
+                  className="text-foreground sm:ml-4"
                 >
-                  ✓ All systems operational
+                  OK: All systems operational
                 </motion.div>
 
-                {/* Social links */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -100,7 +75,7 @@ const Contact = () => {
                   <span className="text-accent">kavish@terminal</span>
                   <span className="text-secondary">:</span>
                   <span className="text-primary">~$</span>
-                  <span className="ml-2">list --social-channels</span>
+                  <span className="ml-2 inline-block">list --social-channels</span>
                 </motion.div>
 
                 <motion.div
@@ -108,9 +83,8 @@ const Contact = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: false }}
                   transition={{ delay: 0.8 }}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 ml-4"
+                  className="ml-0 mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:ml-4 md:grid-cols-4 md:gap-4"
                 >
-                  {/* Email button with popup */}
                   <div className="relative">
                     <motion.button
                       onClick={() => setEmailPopup((v) => !v)}
@@ -118,10 +92,10 @@ const Contact = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false }}
                       transition={{ delay: 0.8 }}
-                      whileHover={{ scale: 1.1 }}
-                      className="flex items-center gap-2 text-foreground hover:text-primary transition-colors p-3 bg-muted/30 rounded-lg border border-primary/20 hover:border-primary/50 w-full"
+                      whileHover={{ scale: 1.04 }}
+                      className="flex w-full items-center gap-2 rounded-lg border border-primary/20 bg-muted/30 p-3 text-foreground transition-colors hover:border-primary/50 hover:text-primary"
                     >
-                      <Mail className="w-5 h-5" />
+                      <Mail className="h-5 w-5 shrink-0" />
                       <span className="text-sm">Email</span>
                     </motion.button>
 
@@ -132,38 +106,28 @@ const Contact = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.95 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute top-full mt-2 left-0 z-50 bg-card border border-primary/40 rounded-lg p-3 shadow-lg shadow-primary/10 min-w-max"
+                          className="absolute left-0 top-full z-50 mt-2 w-[min(22rem,calc(100vw-3rem))] rounded-lg border border-primary/40 bg-card p-3 shadow-lg shadow-primary/10"
                         >
-                          <p className="text-xs text-foreground/60 mb-1.5 font-mono">// my email</p>
-                          <div className="flex items-center gap-2">
-                            <span className="text-primary text-sm font-mono">{EMAIL}</span>
+                          <p className="mb-1.5 text-xs text-foreground/60">// my email</p>
+                          <div className="flex min-w-0 items-center gap-2">
+                            <span className="min-w-0 break-all text-sm text-primary">{EMAIL}</span>
                             <motion.button
                               onClick={handleCopy}
                               whileHover={{ scale: 1.15 }}
                               whileTap={{ scale: 0.9 }}
-                              className="text-foreground/50 hover:text-primary transition-colors"
+                              className="shrink-0 text-foreground/50 transition-colors hover:text-primary"
                               title="Copy"
                             >
-                              {copied
-                                ? <Check className="w-4 h-4 text-green-400" />
-                                : <Copy className="w-4 h-4" />
-                              }
+                              {copied ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
                             </motion.button>
                           </div>
-                          {copied && (
-                            <p className="text-xs text-green-400 mt-1 font-mono">copied!</p>
-                          )}
+                          {copied && <p className="mt-1 text-xs text-green-400">copied!</p>}
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
 
-                  {/* Other social links */}
-                  {[
-                    { icon: Github,   label: "GitHub",   link: "https://github.com/kavishkh",  delay: 0.9 },
-                    { icon: Linkedin, label: "LinkedIn", link: "https://linkedin.com",          delay: 1.0 },
-                    { icon: Twitter,  label: "Twitter",  link: "https://twitter.com",           delay: 1.1 },
-                  ].map((social) => (
+                  {socialLinks.map((social) => (
                     <motion.a
                       key={social.label}
                       href={social.link}
@@ -173,24 +137,21 @@ const Contact = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false }}
                       transition={{ delay: social.delay }}
-                      whileHover={{ scale: 1.1 }}
-                      className="flex items-center gap-2 text-foreground hover:text-primary transition-colors p-3 bg-muted/30 rounded-lg border border-primary/20 hover:border-primary/50"
+                      whileHover={{ scale: 1.04 }}
+                      className="flex items-center gap-2 rounded-lg border border-primary/20 bg-muted/30 p-3 text-foreground transition-colors hover:border-primary/50 hover:text-primary"
                     >
-                      <social.icon className="w-5 h-5" />
+                      <social.icon className="h-5 w-5 shrink-0" />
                       <span className="text-sm">{social.label}</span>
                     </motion.a>
                   ))}
                 </motion.div>
 
-
-
-                {/* Blinking cursor */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false }}
                   transition={{ delay: 1.3 }}
-                  className="mt-4 flex items-center"
+                  className="mt-4 flex flex-wrap items-center"
                 >
                   <span className="text-accent">kavish@terminal</span>
                   <span className="text-secondary">:</span>
@@ -205,7 +166,7 @@ const Contact = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: false }}
               transition={{ delay: 1.4 }}
-              className="text-center text-foreground mt-8"
+              className="mt-8 text-center text-sm text-foreground sm:text-base"
             >
               // Ready to collaborate on something extraordinary? Let's connect.
             </motion.p>
